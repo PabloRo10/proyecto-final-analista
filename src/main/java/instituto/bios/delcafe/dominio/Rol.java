@@ -13,20 +13,19 @@ public class Rol {
     @Column(length = 25)
     String nombreRol;
 
-    public Rol(String nombreRol) {
+    public void setNombreRol(String nombreRol) {
         this.nombreRol = nombreRol;
     }
 
     public String getNombreRol() {
         return nombreRol;
     }
-
-    public Rol() {
+    
+      public Rol() {
         this(null);
     }
 
-    public void setNombreRol(String nombreRol) {
+    public Rol(String nombreRol) {
         this.nombreRol = nombreRol;
     }
-
 }

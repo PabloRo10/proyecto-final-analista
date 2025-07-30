@@ -1,5 +1,7 @@
 package instituto.bios.delcafe.dominio;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -8,7 +10,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "cafes")
-public class Cafe {
+public class Cafe extends Producto{
     
     @NotBlank
     @Size(max = 20)
@@ -23,12 +25,15 @@ public class Cafe {
         this.origen = origen;
     }
 
-    public Cafe() {
-        this(null);
+    public Cafe(){
     }
 
     public Cafe(String origen) {
         this.origen = origen;
     }
 
+    public Cafe(String nombre, String descripcion, Boolean disponible, BigDecimal precio, Integer cantidad, Categoria categoria, String origen){
+         super(nombre, descripcion, disponible, precio, cantidad, categoria);
+        this.origen = origen;
+    }
 }

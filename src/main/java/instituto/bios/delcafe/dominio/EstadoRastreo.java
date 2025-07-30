@@ -1,28 +1,25 @@
 package instituto.bios.delcafe.dominio;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "estados_rastreo")
 public class EstadoRastreo {
     
     @Id
-    @Min(1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer codigo;
+    private Integer codigo;
 
-    @NotBlank
-    @Size(max = 100)
-    @Column(nullable = false, length = 100)
-    String descripcion;
+    @Pattern( //usamos pattern con expresion regular
+        regexp = "en preparación|en camino|entregado",
+        message = "La descripción debe ser 'en preparación', 'en camino' o 'entregado'"
+    )
+    private String descripcion;
 
     public Integer getCodigo() {
         return codigo;

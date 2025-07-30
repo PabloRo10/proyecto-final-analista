@@ -1,10 +1,14 @@
 package instituto.bios.delcafe.dominio;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -15,7 +19,6 @@ import jakarta.validation.constraints.Size;
 public class Evento {
     
     @Id
-    @Min(1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer codigo;
 
@@ -25,16 +28,30 @@ public class Evento {
     String nombre;
 
     @NotBlank
-    @Size(max = 100)
-    @Column(nullable = false, length = 100)
+    @Size(max = 500)
+    @Column(nullable = false, length = 500)
     String descripcion;
 
     @NotBlank
-    @Size(max = 60)
-    @Column(nullable = false, length = 60)
+    @Size(max = 500)
+    @Column(nullable = false, length = 500)
     String direccion;
 
+    @NotBlank
+    @Min(value = 0)
+    @Column(nullable = false)
     Integer cupo;
+
+    @ManyToMany(mappedBy = "eventos")//NUEVO, mapeo para ser bidireccional y acceder de ambas entidades.
+    private Set<Cliente> clientes = new HashSet<>();
+
+    public Set<Cliente> getCliente(){//NUEVO
+        return clientes;
+    }
+    
+    public void SetCliente(Set<Cliente> clientes){//NUEVO
+        this.clientes = clientes;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -77,11 +94,10 @@ public class Evento {
     }
 
     public Evento() {
-        this(null, null, null, null, null);
     }
 
-    public Evento(Integer codigo, String nombre, String descripcion, String direccion, Integer cupo) {
-        this.codigo = codigo;
+    public Evento(String nombre, String descripcion, String direccion, Integer cupo) {
+        //this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;

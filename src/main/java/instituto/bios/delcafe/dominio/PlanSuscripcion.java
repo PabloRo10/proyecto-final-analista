@@ -11,12 +11,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+
 @Entity
-@Table(name = "planes_suscripcion")
+@Table(name = "planSuscripciones")
 public class PlanSuscripcion {
     
     @Id
-    @Min(1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer codigo;
 
@@ -26,13 +26,13 @@ public class PlanSuscripcion {
     String nombre; 
 
     @NotNull
-    @Min(value = 0)
+    @Min(value = 1)//cambio
     @Column(nullable = false)
     Double precio; 
 
     @NotBlank
-    @Size(max = 100)
-    @Column(nullable = false, length = 100)
+    @Size(max = 500)
+    @Column(nullable = false, length = 500)
     String descripcion; 
 
     public Integer getCodigo() {
@@ -68,11 +68,10 @@ public class PlanSuscripcion {
     }
 
     public PlanSuscripcion() {
-        this(null, null, null, null);
+        this(null, null, null);
     }
 
-    public PlanSuscripcion(Integer codigo, String nombre, Double precio, String descripcion) {
-        this.codigo = codigo;
+    public PlanSuscripcion(String nombre, Double precio, String descripcion) {
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;

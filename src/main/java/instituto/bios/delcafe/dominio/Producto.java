@@ -1,11 +1,18 @@
 package instituto.bios.delcafe.dominio;
 
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -14,10 +21,10 @@ import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "productos")
+@Inheritance(strategy = InheritanceType.JOINED)//paso fk a hijos
 public class Producto {
     
     @Id
-    @Min(1)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer codigo;
 
@@ -32,19 +39,40 @@ public class Producto {
     String descripcion; 
 
     @NotNull
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
-    boolean disponible;
+    @NotNull
+    Boolean disponible;
 
     @NotNull
     @Min(value = 0) 
     @Column(nullable = false)
-    Double precio;
+    BigDecimal precio;
 
     @Min(value = 1)
     @Column(nullable = false)
     Integer cantidad;
+
+    @OneToMany(mappedBy = "producto")
+    private Set<DetallePedido> detalles = new HashSet<>();
+
+     public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Set<DetallePedido> getDetalles() {
+        return detalles;
+    }
+
+    public void setDetalles(Set<DetallePedido> detalles) {
+        this.detalles = detalles;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -78,11 +106,11 @@ public class Producto {
         this.disponible = disponible;
     }
 
-    public Double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
@@ -93,14 +121,18 @@ public class Producto {
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
     }
+    public Producto(){
+        
+    }
 
-    public Producto(Integer codigo, String nombre, String descripcion, boolean disponible, Double precio,
-            Integer cantidad) {
-        this.codigo = codigo;
+    public Producto(String nombre, String descripcion, boolean disponible, BigDecimal precio,
+            Integer cantidad, Categoria categoria) {
+        //this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.disponible = disponible;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.categoria=categoria;
     }
 }
