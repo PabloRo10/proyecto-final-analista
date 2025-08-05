@@ -101,17 +101,17 @@ BEGIN
             ('cliente23', 1);
         
         INSERT INTO productos (codigo, nombre, descripcion, disponible, precio, cantidad, categoria_id) VALUES
-            (1,'Cafe Uno', 'blah blah blah blah blah', b'1', 300, 100, 1),
-            (2,'Cafe Dos', 'blah blah blah blah blah', b'1', 350, 100, 2),
-            (3,'Cafe Tres', 'blah blah blah blah blah', b'1', 400, 100, 3),  
-            (4,'Cafe Cuatro', 'blah blah blah blah blah', b'1', 300, 100, 4), 
-            (5,'Cafe Cinco', 'blah blah blah blah blah', b'1', 500, 100, 5), 
-            (6,'Maquina Moka', 'blah blah blah blah blah', b'1', 2000, 100, 2), 
-            (7,'Maquina Espresso', 'blah blah blah blah blah', b'1', 2500, 100, 2), 
-            (8,'Maquina Filtrado', 'blah blah blah blah blah', b'1', 3000, 100, 2), 
-            (9,'Filtros V60', 'blah blah blah blah blah', b'1', 700, 100, 2), 
-            (10,'Jarra Cuello de Cisne', 'blah blah blah blah blah', b'1', 2300, 100, 2),
-            (11,'V60 vidrio', 'blah blah blah blah blah', b'1', 4000, 100, 2);
+            (1,'Nicaragua Fuego', 'Un café de características sensoriales super destacadas, obra del excepcional trabajo de Hugo Nuñez, su productor, a lo largo de todo el proceso, pero en particular en la instancia de secado, donde se fermentan los frutos enteros no menos de 300 horas antes de comenzar el proceso mismo',1, 1790, 100, 1),
+            (2,'Brasil Crucera', 'Su perfil de sabor es clásico, dulce y achocolatado y su acidez cítrica, que acompaña de gran manera el espresso, tiende a ceder su protagonismo en tragos con leche favoreciendo la obtención de tragos dulces y achocolatados.', 1, 750, 100, 2),
+            (3,'El Salvador Alfredo', 'se describe como un café con dulzor pronunciado y notas achocolatadas, reminiscente de chocolate con leche, en lugar de chocolate amargo. Se caracteriza por ser un café de baja complejidad, pero agradable, con sabores dulces, acaramelados y con notas herbales distintivas', 1, 850, 100, 3),  
+            (4,'Colombia Cumbre', 'El Café Cumbre de Juan Valdez es un café colombiano premium, conocido por su sabor fuerte y notas distintivas de uva semiseca, cacao y té. Se describe como un café con un cuerpo medio y acidez media-baja, que ofrece una experiencia intensa y audaz.', 1, 950, 100, 4), 
+            (5,'Honduras Estela', 'El café de Honduras Estela se describe como un café dulce con notas de mango, complejo, con cuerpo y acidez media. Se procesa bajo el método Honey y es de la variedad Catuai, cultivado a 1600 metros sobre el nivel del mar', 1, 990, 100, 5), 
+            (6,'Maquina Moka', 'blah blah blah blah blah', 1, 2000, 100, 2), 
+            (7,'Maquina Espresso', 'blah blah blah blah blah', 1, 2500, 100, 2), 
+            (8,'Maquina Filtrado', 'blah blah blah blah blah', 1, 3000, 100, 2), 
+            (9,'Filtros V60', 'blah blah blah blah blah', 1, 700, 100, 2), 
+            (10,'Jarra Cuello de Cisne', 'blah blah blah blah blah', 1, 2300, 100, 2),
+            (11,'V60 vidrio', 'blah blah blah blah blah', 1, 4000, 100, 2);
 
         INSERT INTO cafes (codigo, origen) VALUES 
             (1, 'Brasil'),

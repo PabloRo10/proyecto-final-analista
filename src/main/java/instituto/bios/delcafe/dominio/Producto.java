@@ -34,8 +34,8 @@ public class Producto {
     String nombre;
 
     @NotBlank
-    @Size(max = 100)
-    @Column(nullable = false, length = 100)
+    @Size(max = 500)
+    @Column(nullable = false, length = 500)
     String descripcion; 
 
     @NotNull
